@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_homepage_homesections",
+  "info": {
+    "displayName": "homesection",
+    "icon": "house",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "body": {
+      "type": "richtext"
+    },
+    "background": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "justify": {
+      "type": "string"
+    }
+  }
+}
