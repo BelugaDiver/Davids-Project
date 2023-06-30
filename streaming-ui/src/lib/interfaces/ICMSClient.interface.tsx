@@ -1,5 +1,5 @@
-import IVideoClient from "./IVideoClient.interface"
-import ISectionClient from "./ISectionClient.Interface"
+import { IVideoClient } from "./IVideoClient.interface"
+import { ISectionClient } from "./ISectionClient.Interface"
 
 interface ICMSClient {
    videos: IVideoClient,

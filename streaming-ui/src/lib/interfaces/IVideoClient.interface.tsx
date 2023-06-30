@@ -1,6 +1,6 @@
 export interface IVideoClient {
-   getAsync(): Video[],
-   getByIdAsync(id: string): Video
+   getAsync(): Promise<Video[]>,
+   getByIdAsync(id: string): Promise<Video>
 }
 
 export type Video = {
