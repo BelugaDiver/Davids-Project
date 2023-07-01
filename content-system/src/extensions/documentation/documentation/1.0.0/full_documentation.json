@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2023-07-01T04:17:48.329Z"
+    "x-generation-date": "2023-07-01T17:14:40.946Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -95,11 +95,43 @@
           "data": {
             "type": "object",
             "properties": {
-              "sections": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/HomepageHomesectionComponent"
-                }
+              "title": {
+                "type": "string"
+              },
+              "body": {
+                "type": "string"
+              },
+              "background": {
+                "oneOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "example": "string or id"
+              },
+              "size": {
+                "type": "string",
+                "enum": [
+                  "small",
+                  "large"
+                ]
+              },
+              "justify": {
+                "type": "string",
+                "enum": [
+                  "left",
+                  "right"
+                ]
+              },
+              "align": {
+                "type": "string",
+                "enum": [
+                  "top",
+                  "bottom"
+                ]
               }
             }
           }
@@ -154,88 +186,6 @@
       "Section": {
         "type": "object",
         "properties": {
-          "sections": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/HomepageHomesectionComponent"
-            }
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "publishedAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "createdBy": {
-            "type": "object",
-            "properties": {
-              "data": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "number"
-                  },
-                  "attributes": {
-                    "type": "object",
-                    "properties": {}
-                  }
-                }
-              }
-            }
-          },
-          "updatedBy": {
-            "type": "object",
-            "properties": {
-              "data": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "number"
-                  },
-                  "attributes": {
-                    "type": "object",
-                    "properties": {}
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "SectionResponseDataObject": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "attributes": {
-            "$ref": "#/components/schemas/Section"
-          }
-        }
-      },
-      "SectionResponse": {
-        "type": "object",
-        "properties": {
-          "data": {
-            "$ref": "#/components/schemas/SectionResponseDataObject"
-          },
-          "meta": {
-            "type": "object"
-          }
-        }
-      },
-      "HomepageHomesectionComponent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
           "title": {
             "type": "string"
           },
@@ -863,14 +813,94 @@
               }
             }
           },
+          "size": {
+            "type": "string",
+            "enum": [
+              "small",
+              "large"
+            ]
+          },
           "justify": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "left",
+              "right"
+            ]
           },
           "align": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "top",
+              "bottom"
+            ]
           },
-          "size": {
-            "type": "string"
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "publishedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "attributes": {
+                    "type": "object",
+                    "properties": {}
+                  }
+                }
+              }
+            }
+          },
+          "updatedBy": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "attributes": {
+                    "type": "object",
+                    "properties": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "SectionResponseDataObject": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "attributes": {
+            "$ref": "#/components/schemas/Section"
+          }
+        }
+      },
+      "SectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/SectionResponseDataObject"
+          },
+          "meta": {
+            "type": "object"
           }
         }
       },

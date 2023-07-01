@@ -1,5 +1,13 @@
 import { ISectionClient, Section } from "../interfaces/ISectionClient.Interface"
 
+function mapSection(input: any): Section {
+   var section = input["attributes"]
+   var background = input["attributes"].background.data.attributes.url
+   section.background = background;
+
+   return section as Section
+}
+
 var sectionClient: ISectionClient = {
    getAsync: async function (): Promise<Section[]> {
       var options: RequestInit = {
@@ -11,11 +19,12 @@ var sectionClient: ISectionClient = {
          }
       }
 
-      var result = await fetch(`http://${process.env.CMS_Host}/api/sections`, options)
+      var result = await fetch(`http://${process.env.CMS_Host}/api/sections?populate=*`, options)
       var json = await result.json()
-      var data = json["data"] as Section[]
+      var data = json["data"]
+      var sections = data.map((s: any) => mapSection(s)) as Section[]
 
-      return data
+      return sections
    },
 
    getByIdAsync: function (id: string): Promise<Section> {

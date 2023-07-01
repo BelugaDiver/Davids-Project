@@ -12,10 +12,40 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "sections": {
-      "type": "component",
-      "repeatable": true,
-      "component": "homepage.homesection"
+    "title": {
+      "type": "string"
+    },
+    "body": {
+      "type": "richtext"
+    },
+    "background": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "size": {
+      "type": "enumeration",
+      "enum": [
+        "small",
+        "large"
+      ]
+    },
+    "justify": {
+      "type": "enumeration",
+      "enum": [
+        "left",
+        "right"
+      ]
+    },
+    "align": {
+      "type": "enumeration",
+      "enum": [
+        "top",
+        "bottom"
+      ]
     }
   }
 }
