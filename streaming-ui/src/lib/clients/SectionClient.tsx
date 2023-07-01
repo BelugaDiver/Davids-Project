@@ -19,7 +19,7 @@ var sectionClient: ISectionClient = {
          }
       }
 
-      var result = await fetch(`http://${process.env.CMS_Host}/api/sections?populate=*`, options)
+      var result = await fetch(`${process.env.CMS_Host}/api/sections?populate=*`, options)
       var json = await result.json()
       var data = json["data"]
       var sections = data.map((s: any) => mapSection(s)) as Section[]

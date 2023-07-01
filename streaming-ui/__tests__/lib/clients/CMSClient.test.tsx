@@ -11,7 +11,7 @@ describe("CMS client tests", () => {
    test("gets a list of sections", async () => {
       var expected: Section[] = []
       fetchMock.mockResponse(req =>
-         req.url === `http://${process.env.CMS_Host}/api/sections`
+         req.url === `${process.env.CMS_Host}/api/sections`
             ? Promise.resolve(`{
                                  "data": [],
                                  "meta": {
@@ -34,7 +34,7 @@ describe("CMS client tests", () => {
    test("gets a list of videos", async () => {
       var expected: Video[] = []
       fetchMock.mockResponse(req =>
-         req.url === `http://${process.env.CMS_Host}/api/videos`
+         req.url === `${process.env.CMS_Host}/api/videos`
             ? Promise.resolve(`{
                                  "data": [],
                                  "meta": {

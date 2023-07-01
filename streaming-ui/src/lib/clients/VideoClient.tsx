@@ -11,7 +11,7 @@ var videoClient: IVideoClient = {
          }
       }
 
-      var result = await fetch(`http://${process.env.CMS_Host}/api/videos`, options)
+      var result = await fetch(`${process.env.CMS_Host}/api/videos`, options)
       var json = await result.json()
       var data = json["data"] as Video[]
 
