@@ -8,5 +8,6 @@ export type Section = {
    body: string,
    background: string,
    justify: string,
+   align: string,
    size: string
 }

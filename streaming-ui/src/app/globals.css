@@ -38,3 +38,17 @@ body {
       transparent,
       rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
+
+.background-reverse {
+  background-color: rgb(var(--foreground-rgb))
+}
+
+.background-corrected {
+  background: linear-gradient(to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+.color-reverse {
+  color: rgb(var(--background-end-rgb));
+}

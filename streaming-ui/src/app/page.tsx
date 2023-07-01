@@ -1,35 +1,22 @@
 import Footer from '@/components/footer'
 import GlobalBar from '@/components/globalBar'
 import { SectionComponent } from '@/components/homepage/sectionComponent'
+import CMSClient from '@/lib/clients/CMSClient'
 import { Section } from '@/lib/interfaces/ISectionClient.Interface'
+import { useEffect } from 'react'
 
-export default function Home() {
-  var sections: Section[] = [
-    {
-      title: "Embrace fitness to unlock a healthier future",
-      body: "Use these videos to teach you how to live a more fulfilling life.",
-      background: "mediaurl",
-      justify: "left",
-      size: "large"
-    },
-    {
-      title: "Title",
-      body: "Long form of text and sentences.",
-      background: "mediaurl",
-      justify: "left",
-      size: "small"
-    }
-  ]
+export default async function Home() {
+  var sections = await CMSClient.sections.getAsync()
 
   var sectionComponent = sections.map(section =>
-    <li><SectionComponent key={section.title} section={section} /></li>
+    <SectionComponent key={section.title} section={section} />
   )
 
   return (
     <main role="main" className="flex min-h-screen flex-col items-center justify-between">
       <GlobalBar />
-      <div className="max-w-screen-xl text-sm w-full px-32 h-full">
-        <ul>{sectionComponent}</ul>
+      <div className="max-w-screen-xl w-full text-sm px-32 h-full">
+        {sectionComponent}
       </div>
       <Footer />
     </main>

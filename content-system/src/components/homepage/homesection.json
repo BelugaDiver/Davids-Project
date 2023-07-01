@@ -23,6 +23,12 @@
     },
     "justify": {
       "type": "string"
+    },
+    "align": {
+      "type": "string"
+    },
+    "size": {
+      "type": "string"
     }
   }
 }
