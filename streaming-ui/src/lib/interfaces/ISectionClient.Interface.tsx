@@ -6,7 +6,8 @@ export interface ISectionClient {
 export type Section = {
    title: string,
    body: string,
-   background: string,
+   largeBackground: string,
+   smallBackground: string
    justify: string,
    align: string,
    size: string

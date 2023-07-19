@@ -36,6 +36,14 @@
     },
     "url": {
       "type": "string"
+    },
+    "Video": {
+      "allowedTypes": [
+        "videos",
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

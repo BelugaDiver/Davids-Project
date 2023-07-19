@@ -2,8 +2,10 @@ import { ISectionClient, Section } from "../interfaces/ISectionClient.Interface"
 
 function mapSection(input: any): Section {
    var section = input["attributes"]
-   var background = input["attributes"].background.data.attributes.url
-   section.background = background;
+   var largeBackground = input["attributes"].background.data.attributes.url
+   var smallBackground = input["attributes"].background.data.attributes.formats.small.url
+   section.largeBackground = largeBackground
+   section.smallBackground = smallBackground
 
    return section as Section
 }

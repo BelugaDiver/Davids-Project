@@ -6,6 +6,7 @@ export interface IVideoClient {
 export type Video = {
    name: string,
    description: string,
+   createdDate: Date,
    views: number,
    videoid: string,
    thumbnail: string,
