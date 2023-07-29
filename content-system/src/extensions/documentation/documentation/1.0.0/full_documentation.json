@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2023-07-19T01:26:05.985Z"
+    "x-generation-date": "2023-07-23T02:43:50.831Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -913,19 +913,16 @@
           "data": {
             "type": "object",
             "properties": {
-              "Name": {
+              "name": {
                 "type": "string"
               },
-              "Description": {
+              "description": {
                 "type": "string"
               },
-              "Views": {
+              "views": {
                 "type": "string",
                 "pattern": "^\\d*$",
                 "example": "123456789"
-              },
-              "videoid": {
-                "type": "string"
               },
               "thumbnail": {
                 "oneOf": [
@@ -938,10 +935,7 @@
                 ],
                 "example": "string or id"
               },
-              "url": {
-                "type": "string"
-              },
-              "Video": {
+              "video": {
                 "oneOf": [
                   {
                     "type": "integer"
@@ -1005,19 +999,16 @@
       "Video": {
         "type": "object",
         "properties": {
-          "Name": {
+          "name": {
             "type": "string"
           },
-          "Description": {
+          "description": {
             "type": "string"
           },
-          "Views": {
+          "views": {
             "type": "string",
             "pattern": "^\\d*$",
             "example": "123456789"
-          },
-          "videoid": {
-            "type": "string"
           },
           "thumbnail": {
             "type": "object",
@@ -1640,10 +1631,7 @@
               }
             }
           },
-          "url": {
-            "type": "string"
-          },
-          "Video": {
+          "video": {
             "type": "object",
             "properties": {
               "data": {
@@ -1787,10 +1775,6 @@
             "format": "date-time"
           },
           "updatedAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "publishedAt": {
             "type": "string",
             "format": "date-time"
           },

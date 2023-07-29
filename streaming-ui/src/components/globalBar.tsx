@@ -1,15 +1,16 @@
+import Link from "next/link"
 import Logo from "./logo"
 
 export default function GlobalBar() {
    return (
       <header role="header" className="flex items-center justify-between w-full p-4 px-7">
-         <a href="/">
+         <Link href="/">
             <Logo width={120} height={30} svgClass={"logo"} />
-         </a>
+         </Link>
          <div className="flex items-stretch justify-between text-lg">
-            <a className="px-2" href="/videos">Videos</a>
-            <a className="px-2" href="/about">About</a>
-            <a className="px-2" href="/resources">Resources</a>
+            <Link className="px-2" href="/videos">Videos</Link>
+            <Link className="px-2" href="/about">About</Link>
+            <Link className="px-2" href="/resources">Resources</Link>
          </div>
       </header>
    )

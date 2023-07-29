@@ -13,12 +13,11 @@ export default async function Home() {
 
   return (
     <main role="main" className="flex min-h-screen flex-col items-center justify-between">
-      <GlobalBar />
-      <div className="max-w-screen-xl w-full text-sm min-h-[600px] p-6 m-6 flex justify-between flex-wrap">
-        <Video />
-        <Video />
-        <Video />
-        <Video />
+      <div className="flex min-w-full flex-col items-center justify-between">
+        <GlobalBar />
+        <div className="max-w-screen-xl w-full text-sm min-h-[600px] p-6 m-6 flex justify-between flex-wrap">
+          {videos.map((video) => <Video video={video} />)}
+        </div>
       </div>
       <Footer />
     </main>
