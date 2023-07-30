@@ -1,31 +1,56 @@
 import { Video } from "@/lib/interfaces/IVideoClient.interface"
 import Link from "next/link"
 
-function Video(props: { video: Video }) {
-   console.log(props)
-
+function Video(props: { video: Video, size: "small" | "large" }) {
    var bgStyle = {
       background: `url("${props.video.url}")`
    }
 
-   return (
-      <div className="p-2 m-2 w-fit h-fit mb-10 hover:opacity-90">
-         <Link href={`/play/${props.video.videoId}`}>
-            <div className="w-64 h-40 rounded-2xl bg-violet-400 flex items-center justify-center">
-               <PlayArrowSVG width={70} height={70} />
-            </div>
-            <h2 className="text-2xl pt-5">{props.video.name ?? "Title"}</h2>
-            <div className="text-base opacity-80">
-               <p className="py-1">{props.video.description ?? "Description for videos."}</p>
-               <div className="flex">
-                  <p className="">{props.video.views ?? "200"} Views</p>
-                  <p className="px-1">•</p>
-                  <p className="">{new Date(props.video.createdAt).toLocaleDateString() ?? "7 months ago"}</p>
+   if (props.size == "large") {
+      return (
+         <div className="p-2 m-2 w-fit h-fit mb-10 hover:opacity-90">
+            <Link href={`/play/${props.video.videoId}`}>
+               <div className="w-64 h-40 rounded-2xl bg-violet-400 flex items-center justify-center">
+                  <PlayArrowSVG width={70} height={70} />
                </div>
-            </div>
-         </Link>
-      </div>
-   )
+               <h2 className="text-2xl pt-5">{props.video.name ?? "Title"}</h2>
+               <div className="text-base opacity-80">
+                  <p className="py-1">{props.video.description ?? "Description for videos."}</p>
+                  <div className="flex">
+                     <p className="">{props.video.views ?? "0"} Views</p>
+                     <p className="px-1">•</p>
+                     <p className="">{new Date(props.video.createdAt).toLocaleDateString() ?? "7 months ago"}</p>
+                  </div>
+               </div>
+            </Link>
+         </div>
+      )
+   } else {
+      return (
+         <div className="p-2 m-2 w-fit h-fit mb-10 hover:opacity-90">
+            <Link href={`/play/${props.video.videoId}`}>
+               <div className="flex">
+                  <div className="w-40 h-24 rounded-2xl bg-violet-400 flex items-center justify-center">
+                     <PlayArrowSVG width={30} height={30} />
+                  </div>
+                  <div className="mx-2 flex flex-col justify-between">
+                     <h2 className="text-base">{props.video.name ?? "Title"}</h2>
+                     <div className="text-xs opacity-80 my-2">
+                        <p className="py-1">{props.video.description ?? "Description for videos."}</p>
+                        <div className="flex">
+                           <p className="">{props.video.views ?? "0"} Views</p>
+                           <p className="px-1">•</p>
+                           <p className="">{new Date(props.video.createdAt).toLocaleDateString() ?? "7 months ago"}</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </Link>
+         </div>
+      )
+   }
+
+
 }
 
 function PlayArrowSVG(props: any) {
