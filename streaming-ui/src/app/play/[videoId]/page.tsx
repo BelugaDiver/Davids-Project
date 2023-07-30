@@ -23,10 +23,7 @@ export default async function Page({ params }: { params: { videoId: string } }) 
               id="my-video"
               className="video-js vjs-16-9"
               controls
-              preload="auto"
-              // width="1690"
-              // height="700"
-              data-setup="{'aspectRatio'='16:9'}">
+              data-setup="{}">
               <source src={`${process.env.CMS_Host}${video.url}`} type="video/mp4" />
               <p className="vjs-no-js">
                 To view this video please enable JavaScript, and consider upgrading to a

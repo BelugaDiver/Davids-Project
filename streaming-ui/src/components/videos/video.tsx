@@ -9,7 +9,7 @@ function Video(props: { video: Video, size: "small" | "large" }) {
    if (props.size == "large") {
       return (
          <div className="p-2 m-2 w-fit h-fit mb-10 hover:opacity-90">
-            <Link href={`/play/${props.video.videoId}`}>
+            <a href={`/play/${props.video.videoId}`}>
                <div className="w-64 h-40 rounded-2xl bg-violet-400 flex items-center justify-center">
                   <PlayArrowSVG width={70} height={70} />
                </div>
@@ -22,13 +22,13 @@ function Video(props: { video: Video, size: "small" | "large" }) {
                      <p className="">{new Date(props.video.createdAt).toLocaleDateString() ?? "7 months ago"}</p>
                   </div>
                </div>
-            </Link>
+            </a>
          </div>
       )
    } else {
       return (
          <div className="p-2 m-2 w-fit h-fit mb-10 hover:opacity-90">
-            <Link href={`/play/${props.video.videoId}`}>
+            <a href={`/play/${props.video.videoId}`}>
                <div className="flex">
                   <div className="w-40 h-24 rounded-2xl bg-violet-400 flex items-center justify-center">
                      <PlayArrowSVG width={30} height={30} />
@@ -45,7 +45,7 @@ function Video(props: { video: Video, size: "small" | "large" }) {
                      </div>
                   </div>
                </div>
-            </Link>
+            </a>
          </div>
       )
    }
