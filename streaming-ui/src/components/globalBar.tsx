@@ -8,9 +8,9 @@ export default function GlobalBar() {
             <Logo width={120} height={30} svgClass={"logo"} />
          </Link>
          <div className="flex items-stretch justify-between text-lg">
-            <Link className="px-2" href="/videos">Videos</Link>
-            <Link className="px-2" href="/about">About</Link>
-            <Link className="px-2" href="/resources">Resources</Link>
+            <Link className="px-2 hover:font-semibold" href="/videos">Videos</Link>
+            <Link className="px-2 hover:font-semibold" href="/about">About</Link>
+            <Link className="px-2 hover:font-semibold" href="/resources">Resources</Link>
          </div>
       </header>
    )
