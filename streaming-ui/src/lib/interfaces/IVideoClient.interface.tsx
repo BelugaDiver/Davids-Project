@@ -1,6 +1,7 @@
 export interface IVideoClient {
    getAsync(): Promise<Video[]>,
    getByIdAsync(id: string): Promise<Video>
+   incrementVideoView(id: string): undefined | any
 }
 
 export type Video = {
