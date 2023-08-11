@@ -7,10 +7,10 @@ import { useEffect, useState } from "react";
 function Video(props: { video: Video, size: "small" | "large" }) {
 
    const videoSrc = `${"http://127.0.0.1:1337"}${props.video.url}`;
-   const generator = new VideoThumbnailGenerator(videoSrc);
    var [url, setUrl] = useState("");
 
    useEffect(() => {
+      const generator = new VideoThumbnailGenerator(videoSrc);
       generator.getThumbnail()
          .then(({ thumbnail }) => {
             // Use the thumbnail...
@@ -57,14 +57,14 @@ function Video(props: { video: Video, size: "small" | "large" }) {
          <div className="p-2 m-2 w-fit h-fit mb-10 hover:opacity-90">
             <a href={`/play/${props.video.videoId}`}>
                <div className="flex">
-                  <div className="w-40 h-24 rounded-2xl bg-violet-400 flex items-center justify-center">
+                  <div style={bgStyle} className="w-40 h-24 rounded-2xl bg-violet-400 flex items-center justify-center">
                      <PlayArrowSVG width={30} height={30} />
                   </div>
                   <div className="mx-2 flex flex-col justify-between">
                      <h2 className="text-base">{props.video.name ?? "Title"}</h2>
                      <div className="text-xs opacity-80 my-2">
                         <p className="py-1">{props.video.description ?? "Description for videos."}</p>
-                        <div className="flex">
+                        <div className="flex flex-wrap">
                            <p className="">{props.video.views ?? "0"} Views</p>
                            <p className="px-1">•</p>
                            <p className="">{new Date(props.video.createdAt).toLocaleDateString() ?? "7 months ago"}</p>
