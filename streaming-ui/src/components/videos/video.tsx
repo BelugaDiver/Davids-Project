@@ -1,17 +1,44 @@
+"use client"
+
 import { Video } from "@/lib/interfaces/IVideoClient.interface"
-import Link from "next/link"
+import { VideoThumbnailGenerator } from "browser-video-thumbnail-generator";
+import { useEffect, useState } from "react";
 
 function Video(props: { video: Video, size: "small" | "large" }) {
+
+   const videoSrc = `${"http://127.0.0.1:1337"}${props.video.url}`;
+   const generator = new VideoThumbnailGenerator(videoSrc);
+   var [url, setUrl] = useState("");
+
+   useEffect(() => {
+      generator.getThumbnail()
+         .then(({ thumbnail }) => {
+            // Use the thumbnail...
+            console.log(thumbnail);
+            setUrl(thumbnail);
+            // When you're done with the thumbnail, revoke it to free memory
+            //revoke();
+         });
+   }, [props.video])
+
+   function revokeUrl(src: string) {
+      URL.revokeObjectURL(src);
+      console.log("revoked")
+   }
+
    var bgStyle = {
-      background: `url("${props.video.url}")`
+      backgroundImage: `url("${url}")`,
+      backgroundSize: 'cover'
    }
 
    if (props.size == "large") {
       return (
          <div className="p-2 m-2 w-fit h-fit mb-10 hover:opacity-90">
             <a href={`/play/${props.video.videoId}`}>
-               <div className="w-64 h-40 rounded-2xl bg-violet-400 flex items-center justify-center">
-                  <PlayArrowSVG width={70} height={70} />
+               <div style={bgStyle} className="w-64 h-40 rounded-2xl bg-violet-400 flex items-end justify-end">
+                  <div className="m-3" onLoad={() => revokeUrl(url)}>
+                     <PlayArrowSVG width={25} height={25} />
+                  </div>
                </div>
                <h2 className="text-2xl pt-5">{props.video.name ?? "Title"}</h2>
                <div className="text-base opacity-80">
@@ -62,10 +89,10 @@ function PlayArrowSVG(props: any) {
          <defs>
 
          </defs>
-         <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+         <g id="Page-1" stroke="none" strokeWidth="1" fill="white" fillRule="evenodd">
             <g id="Dribbble-Light-Preview" transform="translate(-427.000000, -3765.000000)" fill="#000000">
                <g id="icons" transform="translate(56.000000, 160.000000)">
-                  <polygon id="play-[#1001]" points="371 3605 371 3613 378 3609" />
+                  <polygon id="play-[#1001]" fill="white" points="371 3605 371 3613 378 3609" />
                </g>
             </g>
          </g>
