@@ -4,27 +4,22 @@ import { Video } from "@/lib/interfaces/IVideoClient.interface"
 import { VideoThumbnailGenerator } from "browser-video-thumbnail-generator";
 import { useEffect, useState } from "react";
 
-function Video(props: { video: Video, size: "small" | "large" }) {
-
-   const videoSrc = `${"http://127.0.0.1:1337"}${props.video.url}`;
+function Video(props: { video: Video, size: "small" | "large", host: string | undefined }) {
+   const videoSrc = `${props.host}${props.video.url}`;
    var [url, setUrl] = useState("");
 
    useEffect(() => {
       const generator = new VideoThumbnailGenerator(videoSrc);
       generator.getThumbnail()
          .then(({ thumbnail }) => {
-            // Use the thumbnail...
-            console.log(thumbnail);
             setUrl(thumbnail);
-            // When you're done with the thumbnail, revoke it to free memory
-            //revoke();
+
+            setTimeout(() => {
+               URL.revokeObjectURL(url);
+               console.log("freed")
+            }, 1000)
          });
    }, [props.video])
-
-   function revokeUrl(src: string) {
-      URL.revokeObjectURL(src);
-      console.log("revoked")
-   }
 
    var bgStyle = {
       backgroundImage: `url("${url}")`,
@@ -36,7 +31,7 @@ function Video(props: { video: Video, size: "small" | "large" }) {
          <div className="p-2 m-2 w-fit h-fit mb-10 hover:opacity-90">
             <a href={`/play/${props.video.videoId}`}>
                <div style={bgStyle} className="w-64 h-40 rounded-2xl bg-violet-400 flex items-end justify-end">
-                  <div className="m-3" onLoad={() => revokeUrl(url)}>
+                  <div className="m-3">
                      <PlayArrowSVG width={25} height={25} />
                   </div>
                </div>
