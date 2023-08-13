@@ -1,5 +1,6 @@
 import Footer from '@/components/footer'
 import GlobalBar from '@/components/globalBar'
+import PictureAnimation from '@/components/homepage/threejsanimation/scripts/PictureAnimation'
 import { SectionComponent } from '@/components/homepage/sectionComponent'
 import CMSClient from '@/lib/clients/CMSClient'
 import { metadata } from './layout'
@@ -17,6 +18,7 @@ export default async function Home() {
 
   return (
     <main role="main" className="flex min-h-screen flex-col items-center justify-between">
+      <PictureAnimation />
       <GlobalBar />
       <div className="max-w-screen-lg w-full text-sm h-full">
         {sectionComponent}
