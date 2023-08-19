@@ -11,11 +11,7 @@ export default class WebGLView {
 
 		// [TO-DO] - Change this to use static png files
 		this.samples = [
-			'images/sample-01.png',
-			'images/sample-02.png',
-			'images/sample-03.png',
-			'images/sample-04.png',
-			'images/sample-05.png',
+			'/logo.png'
 		];
 
 		this.initThree();

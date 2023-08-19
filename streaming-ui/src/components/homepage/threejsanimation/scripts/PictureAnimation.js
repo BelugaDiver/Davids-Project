@@ -9,7 +9,7 @@ export default class PictureAnimation extends React.Component {
 		super(props);
 	}
 
-	shouldComponentUpdate = () => false
+	shouldComponentUpdate = () => false;
 
 	render() {
 		this.init()

@@ -2,7 +2,9 @@
 
 import * as THREE from 'three';
 import TouchTexture from './TouchTexture';
-import glslify from 'glslify'
+import { TweenLite } from 'greensock'
+
+var glslify = require('glslify')
 
 export default class Particles {
 
@@ -74,8 +76,8 @@ export default class Particles {
 
 		const material = new THREE.RawShaderMaterial({
 			uniforms,
-			vertexShader: glslify(import('../../../shaders/particle.vert.ts')),
-			fragmentShader: glslify(import('../../../shaders/particle.frag.ts')),
+			vertexShader: `${require('../../../shaders/particle.output.vert')}`,
+			fragmentShader: `${require('../../../shaders/particle.output.frag')}`,
 			depthTest: false,
 			transparent: true,
 			// blending: THREE.AdditiveBlending
@@ -89,7 +91,7 @@ export default class Particles {
 		positions.setXYZ(1, 0.5, 0.5, 0.0);
 		positions.setXYZ(2, -0.5, -0.5, 0.0);
 		positions.setXYZ(3, 0.5, -0.5, 0.0);
-		geometry.addAttribute('position', positions);
+		geometry.setAttribute('position', positions);
 
 		// uvs
 		const uvs = new THREE.BufferAttribute(new Float32Array(4 * 2), 2);
@@ -97,7 +99,7 @@ export default class Particles {
 		uvs.setXYZ(1, 1.0, 0.0);
 		uvs.setXYZ(2, 0.0, 1.0);
 		uvs.setXYZ(3, 1.0, 1.0);
-		geometry.addAttribute('uv', uvs);
+		geometry.setAttribute('uv', uvs);
 
 		// index
 		geometry.setIndex(new THREE.BufferAttribute(new Uint16Array([0, 2, 1, 2, 3, 1]), 1));
@@ -119,9 +121,9 @@ export default class Particles {
 			j++;
 		}
 
-		geometry.addAttribute('pindex', new THREE.InstancedBufferAttribute(indices, 1, false));
-		geometry.addAttribute('offset', new THREE.InstancedBufferAttribute(offsets, 3, false));
-		geometry.addAttribute('angle', new THREE.InstancedBufferAttribute(angles, 1, false));
+		geometry.setAttribute('pindex', new THREE.InstancedBufferAttribute(indices, 1, false));
+		geometry.setAttribute('offset', new THREE.InstancedBufferAttribute(offsets, 3, false));
+		geometry.setAttribute('angle', new THREE.InstancedBufferAttribute(angles, 1, false));
 
 		this.object3D = new THREE.Mesh(geometry, material);
 		this.container.add(this.object3D);
