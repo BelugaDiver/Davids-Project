@@ -11,7 +11,7 @@ export default class WebGLView {
 
 		// [TO-DO] - Change this to use static png files
 		this.samples = [
-			'/logo.png'
+			'/logo2.png'
 		];
 
 		this.initThree();
