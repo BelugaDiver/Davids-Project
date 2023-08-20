@@ -18,7 +18,7 @@ export default async function Home() {
 
   return (
     <main role="main" className="flex min-h-screen flex-col items-center justify-between">
-      <PictureAnimation />
+      {/* <PictureAnimation /> */}
       <GlobalBar />
       <div className="max-w-screen-lg w-full text-sm h-full">
         {sectionComponent}
