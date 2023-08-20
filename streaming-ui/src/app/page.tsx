@@ -1,6 +1,6 @@
 import Footer from '@/components/footer'
 import GlobalBar from '@/components/globalBar'
-import PictureAnimation from '@/components/homepage/threejsanimation/scripts/PictureAnimation'
+import PictureAnimation from '@/components/homepage/threejsanimation/pictureAnimation'
 import { SectionComponent } from '@/components/homepage/sectionComponent'
 import CMSClient from '@/lib/clients/CMSClient'
 import { metadata } from './layout'

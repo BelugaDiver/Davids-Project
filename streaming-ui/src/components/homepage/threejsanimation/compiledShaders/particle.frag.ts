@@ -2,6 +2,7 @@ export default `
 // @author brunoimbrizi / http://brunoimbrizi.com
 
 precision highp float;
+#define GLSLIFY 1
 
 uniform sampler2D uTexture;
 

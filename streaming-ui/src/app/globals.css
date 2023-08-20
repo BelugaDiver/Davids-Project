@@ -11,7 +11,7 @@
   --color-bg-fill-rbg: 201, 203, 163;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
@@ -20,7 +20,7 @@
 
     --color-bg-fill-rbg: 114, 116, 66;
   }
-}
+} */
 
 .footer {
   border-top: 1px solid rgb(var(--color-border-rgb));

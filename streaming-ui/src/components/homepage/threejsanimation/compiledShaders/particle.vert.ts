@@ -1,3 +1,4 @@
+export default `
 // @author brunoimbrizi / http://brunoimbrizi.com
 
 precision highp float;
@@ -136,3 +137,4 @@ void main() {
 
 	gl_Position = finalPosition;
 }
+`
