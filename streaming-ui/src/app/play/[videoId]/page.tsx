@@ -21,16 +21,16 @@ export default async function Page({ params }: { params: { videoId: string } }) 
         <div className="flex w-full flex-col lg:justify-center lg:flex-row">
           <div className="max-w-screen-xl lg:w-3/4 text-sm min-h-[600px] p-6 m-6 flex justify-between flex-wrap">
             <VideoPlayer videoUrl={`${process.env.CMS_Host}${video.url}`} />
-            <div id='videoDescription' className="mt-6 w-full flex flex-col lg:flex-row">
-              <div className="videoInfo lg:w-2/3 p-8 rounded-lg mb-2 lg:mb-0 lg:mr-2">
-                <h2 className="text-lg lg:text-2xl font-semibold">{video.name}</h2>
+            <div id='videoDescription' className="mt-6 w-full flex flex-col md:flex-row">
+              <div className="videoInfo md:w-2/3 p-8 rounded-lg mb-2 md:mb-0 md:mr-2">
+                <h2 className="text-lg md:text-2xl font-semibold">{video.name}</h2>
                 <p className="text-base pb-4">{video.description}</p>
               </div>
-              <div className="videoInfo lg:w-1/3 p-8 rounded-lg mt-2 lg:mt-0 lg:ml-2">
-                <h2 className="text-base lg:text-xl font-semibold">Views: {video.views ?? 0}</h2>
+              <div className="videoInfo md:w-1/3 p-8 rounded-lg mt-2 md:mt-0 md:ml-2">
+                <h2 className="text-base md:text-xl font-semibold">Views: {video.views ?? 0}</h2>
                 <br />
-                <h2 className="text-base lg:text-xl font-semibold">Posted On:</h2>
-                <h2 className="text-base lg:text-xl pb-4">{new Date(video.createdAt).toLocaleString()}</h2>
+                <h2 className="text-base md:text-xl font-semibold">Posted On:</h2>
+                <h2 className="text-base md:text-xl pb-4">{new Date(video.createdAt).toLocaleString()}</h2>
               </div>
             </div>
             <Comments videoId={params.videoId} />
