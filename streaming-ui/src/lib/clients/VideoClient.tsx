@@ -9,7 +9,7 @@ function mapVideo(input: any): Video {
 }
 
 var videoClient: IVideoClient = {
-   getAsync: async function (): Promise<Video[]> {
+   getAsync: async function (sort: string = ""): Promise<Video[]> {
       var options: RequestInit = {
          method: "GET",
          mode: "cors",
@@ -19,7 +19,7 @@ var videoClient: IVideoClient = {
          }
       }
 
-      var result = await fetch(`${process.env.CMS_Host}/api/videos?populate=*`, options)
+      var result = await fetch(`${process.env.CMS_Host}/api/videos?populate=*${sort}`, options)
       var json = await result.json()
       var data = json["data"]
       var videos = data.map((v: any) => mapVideo(v))

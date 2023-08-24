@@ -46,6 +46,12 @@
         "top",
         "bottom"
       ]
+    },
+    "cta": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
     }
   }
 }

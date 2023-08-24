@@ -1,5 +1,5 @@
 export interface IVideoClient {
-   getAsync(): Promise<Video[]>,
+   getAsync(sort: string | any): Promise<Video[]>,
    getByIdAsync(id: string): Promise<Video>
    incrementVideoView(id: string): undefined | any
 }

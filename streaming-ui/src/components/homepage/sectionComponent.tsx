@@ -1,4 +1,6 @@
 import { Section } from "@/lib/interfaces/ISectionClient.Interface";
+import { Button } from "@mui/joy";
+import Link from "next/link";
 
 export interface ISectionComponent {
    section: Section
@@ -20,6 +22,11 @@ export function SectionComponent(props: ISectionComponent) {
             <div className="w-80 h-60 background-corrected rounded-xl p-4">
                <h3 className="text-xl font-bold px-2 py-1">{props.section.title}</h3>
                <p className="px-2 py-1">{props.section.body}</p>
+               <div className="py-4 px-2">
+                  {props.section.cta != null ?
+                     <Link href={props.section.link}><Button className="bg-blue-500">{props.section.cta}</Button></Link>
+                     : null}
+               </div>
             </div>
          </div>) :
          (<div style={style} className={`background-reverse ${size} py-8 mx-2 my-8 rounded-xl`}>

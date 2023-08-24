@@ -10,5 +10,7 @@ export type Section = {
    smallBackground: string
    justify: string,
    align: string,
-   size: string
+   size: string,
+   link: string,
+   cta: string
 }
