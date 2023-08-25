@@ -4,6 +4,34 @@ import { Video } from "@/lib/interfaces/IVideoClient.interface"
 import { VideoThumbnailGenerator } from "browser-video-thumbnail-generator";
 import { useEffect, useState } from "react";
 
+function timeSince(date: Date) {
+
+   var seconds = Math.floor((new Date() - date) / 1000);
+
+   var interval = seconds / 31536000;
+
+   if (interval > 1) {
+      return Math.floor(interval) + " year(s) ago";
+   }
+   interval = seconds / 2592000;
+   if (interval > 1) {
+      return Math.floor(interval) + " month(s) ago";
+   }
+   interval = seconds / 86400;
+   if (interval > 1) {
+      return Math.floor(interval) + " day(s) ago";
+   }
+   interval = seconds / 3600;
+   if (interval > 1) {
+      return Math.floor(interval) + " hour(s) ago";
+   }
+   interval = seconds / 60;
+   if (interval > 1) {
+      return Math.floor(interval) + " minute(s) ago";
+   }
+   return Math.floor(seconds) + " second(s) ago";
+}
+
 function Video(props: { video: Video, size: "small" | "large", host: string | undefined }) {
    const videoSrc = `${props.host}${props.video.url}`;
    var [url, setUrl] = useState("");
@@ -41,7 +69,7 @@ function Video(props: { video: Video, size: "small" | "large", host: string | un
                   <div className="flex">
                      <p className="">{props.video.views ?? "0"} Views</p>
                      <p className="px-1">•</p>
-                     <p className="">{new Date(props.video.createdAt).toLocaleDateString() ?? "7 months ago"}</p>
+                     <p className="">{timeSince(new Date(props.video.createdAt)) ?? "7 months ago"}</p>
                   </div>
                </div>
             </a>
@@ -62,7 +90,7 @@ function Video(props: { video: Video, size: "small" | "large", host: string | un
                         <div className="flex flex-wrap">
                            <p className="">{props.video.views ?? "0"} Views</p>
                            <p className="px-1">•</p>
-                           <p className="">{new Date(props.video.createdAt).toLocaleDateString() ?? "7 months ago"}</p>
+                           <p className="">{timeSince(new Date(props.video.createdAt)) ?? "7 months ago"}</p>
                         </div>
                      </div>
                   </div>

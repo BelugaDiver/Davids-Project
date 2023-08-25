@@ -44,7 +44,7 @@ var videoClient: IVideoClient = {
       return mapVideo(data)
    },
 
-   incrementVideoView: async function (id: string, address) {
+   incrementVideoView: async function (host: string, id: string, address) {
       var options: RequestInit = {
          method: "POST",
          mode: "cors",
@@ -60,7 +60,7 @@ var videoClient: IVideoClient = {
          })
       }
 
-      var result = await fetch(`${process.env.CMS_Host}/api/views/`, options)
+      var result = await fetch(`${host}/api/views/`, options)
    }
 }
 
