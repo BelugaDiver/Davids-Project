@@ -7,12 +7,15 @@ import Script from 'next/script'
 import RelatedVideos from '@/components/videos/relatedVideos'
 import VideoPlayer from './videoPlayer'
 import NotFound from './notFound'
+import { getVideoViews } from '@/lib/clients/videoViewsClient'
 
 
 export default async function Page({ params }: { params: { videoId: string } }) {
   var video;
+  var views;
   try {
     video = await CMSClient.videos.getByIdAsync(params.videoId)
+    views = await getVideoViews(process.env.CMS_Host as string, params.videoId)
   } catch (error) {
     return (<NotFound />)
   }
@@ -35,10 +38,12 @@ export default async function Page({ params }: { params: { videoId: string } }) 
                 <p className="text-base pb-4">{video.description}</p>
               </div>
               <div className="videoInfo md:w-1/3 p-8 rounded-lg mt-2 md:mt-0 md:ml-2">
-                <h2 className="text-base md:text-xl font-semibold">Views: {video.views ?? 0}</h2>
+                <h2 className="text-base md:text-xl font-semibold">Views: {views ?? 0}</h2>
                 <br />
-                <h2 className="text-base md:text-xl font-semibold">Posted On:</h2>
-                <h2 className="text-base lg:text-xl pb-4">{new Date(video.createdAt).toLocaleString()}</h2>
+                <div className="lg:flex">
+                  <h2 className="text-base md:text-xl font-semibold lg:pr-1">Posted:</h2>
+                  <h2 className="text-base lg:text-xl pb-4 lg:pl-1">{timeSince(new Date(video.createdAt))}</h2>
+                </div>
               </div>
             </div>
             <Comments videoId={params.videoId} />
@@ -51,4 +56,33 @@ export default async function Page({ params }: { params: { videoId: string } }) 
       <Script src="//vjs.zencdn.net/8.3.0/video.min.js" />
     </main>
   )
+}
+
+
+function timeSince(date: Date) {
+
+  var seconds = Math.floor((new Date() - date) / 1000);
+
+  var interval = seconds / 31536000;
+
+  if (interval > 1) {
+    return Math.floor(interval) + " year(s) ago";
+  }
+  interval = seconds / 2592000;
+  if (interval > 1) {
+    return Math.floor(interval) + " month(s) ago";
+  }
+  interval = seconds / 86400;
+  if (interval > 1) {
+    return Math.floor(interval) + " day(s) ago";
+  }
+  interval = seconds / 3600;
+  if (interval > 1) {
+    return Math.floor(interval) + " hour(s) ago";
+  }
+  interval = seconds / 60;
+  if (interval > 1) {
+    return Math.floor(interval) + " minute(s) ago";
+  }
+  return Math.floor(seconds) + " second(s) ago";
 }
