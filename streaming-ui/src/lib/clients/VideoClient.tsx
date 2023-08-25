@@ -38,16 +38,15 @@ var videoClient: IVideoClient = {
       }
 
       var result = await fetch(`${process.env.CMS_Host}/api/videos/${id}?populate=*`, options)
-
       var json = await result.json()
       var data = json["data"]
 
       return mapVideo(data)
    },
 
-   incrementVideoView: async function (id: string) {
+   incrementVideoView: async function (id: string, address) {
       var options: RequestInit = {
-         method: "PUT",
+         method: "POST",
          mode: "cors",
          headers: {
             "Content-Type": "application/json",
@@ -55,12 +54,13 @@ var videoClient: IVideoClient = {
          },
          body: JSON.stringify({
             data: {
-               views: 1
+               videoId: id,
+               IpAddress: address
             }
          })
       }
 
-      var result = await fetch(`${process.env.CMS_Host}/api/videos/${id}?populate=*`, options)
+      var result = await fetch(`${process.env.CMS_Host}/api/views/`, options)
    }
 }
 

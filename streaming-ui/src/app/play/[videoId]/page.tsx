@@ -28,7 +28,7 @@ export default async function Page({ params }: { params: { videoId: string } }) 
         <GlobalBar />
         <div className="flex w-full flex-col lg:justify-center lg:flex-row">
           <div className="max-w-screen-xl lg:w-3/4 text-sm min-h-[600px] p-6 m-6 flex justify-between flex-wrap">
-            <VideoPlayer videoUrl={`${process.env.CMS_Host}${video.url}`} />
+            <VideoPlayer id={video.videoId} videoUrl={`${process.env.CMS_Host}${video.url}`} />
             <div id='videoDescription' className="mt-6 w-full flex flex-col md:flex-row">
               <div className="videoInfo md:w-2/3 p-8 rounded-lg mb-2 md:mb-0 md:mr-2">
                 <h2 className="text-lg md:text-2xl font-semibold">{video.name}</h2>

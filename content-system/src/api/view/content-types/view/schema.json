@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "views",
+  "info": {
+    "singularName": "view",
+    "pluralName": "views",
+    "displayName": "views"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "videoId": {
+      "type": "string"
+    },
+    "IpAddress": {
+      "type": "string"
+    }
+  }
+}
