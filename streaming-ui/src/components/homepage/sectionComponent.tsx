@@ -11,6 +11,7 @@ export function SectionComponent(props: ISectionComponent) {
    var align = props.section.align == "top" ? "items-start" : "items-end"
    var size = props.section.size == 'large' ? "w-full h-[600px] px-16" : "w-1/2 h-[400px] px-6"
 
+   console.log(props.section)
    var style = {
       backgroundImage: `url(${process.env.CMS_Host}${props.section.size == 'large' ? props.section.largeBackground : props.section.smallBackground})`,
       backgroundRepeat: "no-repeat",

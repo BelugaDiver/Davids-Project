@@ -6,9 +6,17 @@ import { metadata } from '../../layout'
 import Script from 'next/script'
 import RelatedVideos from '@/components/videos/relatedVideos'
 import VideoPlayer from './videoPlayer'
+import NotFound from './notFound'
+
 
 export default async function Page({ params }: { params: { videoId: string } }) {
-  var video = await CMSClient.videos.getByIdAsync(params.videoId)
+  var video;
+  try {
+    video = await CMSClient.videos.getByIdAsync(params.videoId)
+  } catch (error) {
+    return (<NotFound />)
+  }
+
 
   // Set page title and meta
   metadata.title = "Play | Segun"
@@ -30,7 +38,7 @@ export default async function Page({ params }: { params: { videoId: string } }) 
                 <h2 className="text-base md:text-xl font-semibold">Views: {video.views ?? 0}</h2>
                 <br />
                 <h2 className="text-base md:text-xl font-semibold">Posted On:</h2>
-                <h2 className="text-base md:text-xl pb-4">{new Date(video.createdAt).toLocaleString()}</h2>
+                <h2 className="text-base lg:text-xl pb-4">{new Date(video.createdAt).toLocaleString()}</h2>
               </div>
             </div>
             <Comments videoId={params.videoId} />
