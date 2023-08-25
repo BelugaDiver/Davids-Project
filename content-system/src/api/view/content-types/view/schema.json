@@ -4,18 +4,19 @@
   "info": {
     "singularName": "view",
     "pluralName": "views",
-    "displayName": "views"
+    "displayName": "views",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "videoId": {
-      "type": "string"
-    },
     "IpAddress": {
       "type": "string"
+    },
+    "videoId": {
+      "type": "integer"
     }
   }
 }

@@ -45,6 +45,7 @@ var videoClient: IVideoClient = {
    },
 
    incrementVideoView: async function (host: string, id: string, address) {
+      "use server"
       var options: RequestInit = {
          method: "POST",
          mode: "cors",

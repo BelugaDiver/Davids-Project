@@ -1,6 +1,6 @@
 "use client"
 
-import CMSClient from "@/lib/clients/CMSClient";
+import incrementVideoView from "@/lib/clients/IncrementVideoViews";
 import { useEffect, useState } from "react";
 import { v4 as uuid } from 'uuid'
 
@@ -13,6 +13,8 @@ export default function VideoPlayer(props: { id: string, host: string | undefine
       player.ontimeupdate = () => {
          if (player?.currentTime >= 5 && !watched) {
             setWatched(true);
+
+            incrementVideoView(props.host as string, props.id, uuid())
 
             console.log("watched");
             player.ontimeupdate = null;
