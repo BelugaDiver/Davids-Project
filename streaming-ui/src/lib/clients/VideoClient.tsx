@@ -44,7 +44,7 @@ var videoClient: IVideoClient = {
       return mapVideo(data)
    },
 
-   incrementVideoView: async function (host: string, id: string, address) {
+   getVideoViews: async function (host: string, id: string, address) {
       "use server"
       var options: RequestInit = {
          method: "POST",

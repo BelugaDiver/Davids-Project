@@ -1,6 +1,6 @@
 "use client"
 
-import incrementVideoView from "@/lib/clients/IncrementVideoViews";
+import { incrementVideoView } from "@/lib/clients/videoViewsClient";
 import { useEffect, useState } from "react";
 import { v4 as uuid } from 'uuid'
 

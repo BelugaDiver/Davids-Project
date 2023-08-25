@@ -1,5 +1,6 @@
 "use client"
 
+import { getVideoViews } from "@/lib/clients/videoViewsClient";
 import { Video } from "@/lib/interfaces/IVideoClient.interface"
 import { VideoThumbnailGenerator } from "browser-video-thumbnail-generator";
 import { useEffect, useState } from "react";
@@ -7,8 +8,16 @@ import { useEffect, useState } from "react";
 function Video(props: { video: Video, size: "small" | "large", host: string | undefined }) {
    const videoSrc = `${props.host}${props.video.url}`;
    var [url, setUrl] = useState("");
+   var [views, setViews] = useState(0);
+
+
 
    useEffect(() => {
+      getVideoViews(props.host as string, props.video.videoId)
+         .then((view) => {
+            setViews(view);
+         });
+
       const generator = new VideoThumbnailGenerator(videoSrc);
       generator.getThumbnail()
          .then(({ thumbnail }) => {
@@ -39,7 +48,7 @@ function Video(props: { video: Video, size: "small" | "large", host: string | un
                <div className="text-base opacity-80">
                   <p className="py-1">{props.video.description ?? "Description for videos."}</p>
                   <div className="flex">
-                     <p className="">{props.video.views ?? "0"} Views</p>
+                     <p className="">{views ?? "0"} Views</p>
                      <p className="px-1">•</p>
                      <p className="">{timeSince(new Date(props.video.createdAt)) ?? "7 months ago"}</p>
                   </div>
@@ -60,7 +69,7 @@ function Video(props: { video: Video, size: "small" | "large", host: string | un
                      <div className="text-xs opacity-80 my-2">
                         <p className="py-1">{props.video.description ?? "Description for videos."}</p>
                         <div className="flex flex-wrap">
-                           <p className="">{props.video.views ?? "0"} Views</p>
+                           <p className="">{views ?? "0"} Views</p>
                            <p className="px-1">•</p>
                            <p className="">{timeSince(new Date(props.video.createdAt)) ?? "7 months ago"}</p>
                         </div>
