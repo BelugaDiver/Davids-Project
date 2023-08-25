@@ -9,7 +9,6 @@ export default function GlobalBar() {
          </Link>
          <div className="flex items-stretch justify-between text-lg">
             <Link className="px-2 hover:font-semibold" href="/videos">Videos</Link>
-            <Link className="px-2 hover:font-semibold" href="/resources">Resources</Link>
          </div>
       </header>
    )
