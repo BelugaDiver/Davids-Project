@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "homepage_copies",
+  "info": {
+    "singularName": "homepage-copy",
+    "pluralName": "homepage-copies",
+    "displayName": "Homepage Copy"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Copy": {
+      "type": "richtext"
+    }
+  }
+}
