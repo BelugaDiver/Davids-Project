@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2023-08-25T12:15:28.067Z"
+    "x-generation-date": "2023-08-26T18:22:07.938Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -2246,11 +2246,11 @@
           "data": {
             "type": "object",
             "properties": {
-              "IpAddress": {
+              "videoId": {
                 "type": "string"
               },
-              "videoId": {
-                "type": "integer"
+              "IpAddress": {
+                "type": "string"
               }
             }
           }
@@ -2305,11 +2305,11 @@
       "View": {
         "type": "object",
         "properties": {
-          "IpAddress": {
+          "videoId": {
             "type": "string"
           },
-          "videoId": {
-            "type": "integer"
+          "IpAddress": {
+            "type": "string"
           },
           "createdAt": {
             "type": "string",
