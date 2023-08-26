@@ -4,8 +4,9 @@
   "version": "0.1.0",
   "description": "A Strapi application",
   "scripts": {
+    "init-start": "npm install",
     "develop": "strapi develop",
-    "start": "strapi start",
+    "start": "npm run init-start && npm run develop",
     "build": "strapi build",
     "strapi": "strapi"
   },
