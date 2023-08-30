@@ -7,7 +7,7 @@
     "init-start": "npm install",
     "develop": "strapi develop",
     "deploy": "node node_modules/@strapi/strapi/bin/strapi.js start",
-    "start": "node node_modules/@strapi/strapi/bin/strapi.js start",
+    "start": "npm run init-start && npm run deploy",
     "build": "strapi build",
     "strapi": "strapi"
   },
