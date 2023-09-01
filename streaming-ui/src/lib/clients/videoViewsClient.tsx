@@ -27,6 +27,9 @@ export async function getVideoViews(host: string, id: string) {
       headers: {
          "Content-Type": "application/json",
          "Authorization": `Bearer ${process.env.CMS_TOKEN}`
+      },
+      next: {
+         revalidate: 180000
       }
    }
 
