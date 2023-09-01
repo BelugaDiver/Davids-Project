@@ -86,7 +86,7 @@ function Video(props: { video: Video, size: "small" | "large", host: string | un
 
 function timeSince(date: Date) {
 
-   var seconds = Math.floor((new Date() - date) / 1000);
+   var seconds = Math.floor((Date.now() - date.getTime()) / 1000);
 
    var interval = seconds / 31536000;
 

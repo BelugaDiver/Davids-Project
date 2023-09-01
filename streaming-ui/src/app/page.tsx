@@ -15,8 +15,8 @@ export default async function Home() {
 
   var copy = await CMSClient.homepageCopy.getAsync()
   var homepageCopy = copy.map(c =>
-    <div>
-      <p className='px-2' key={c.Copy}>{c.Copy}</p>
+    <div key={c.Copy}>
+      <p className='px-2'>{c.Copy}</p>
       <br />
     </div>
   )

@@ -61,7 +61,7 @@ export default async function Page({ params }: { params: { videoId: string } }) 
 
 function timeSince(date: Date) {
 
-  var seconds = Math.floor((new Date() - date) / 1000);
+  var seconds = Math.floor((Date.now() - date.getTime()) / 1000);
 
   var interval = seconds / 31536000;
 
