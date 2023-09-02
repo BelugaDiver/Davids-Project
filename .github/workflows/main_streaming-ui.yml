@@ -31,7 +31,7 @@ jobs:
       with:
         push: true
         tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_f930cd75439440b0ad5db1e09fcf6d80 }}/belugadiver/streaming-ui:${{ github.sha }}
-        file: ./Dockerfile
+        file: ./streaming-ui/Dockerfile
 
   deploy:
     runs-on: ubuntu-latest
